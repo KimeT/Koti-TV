@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Testisivu</title>
+	<style>
+		table { border-collapse: collapse; }
+		td { border: 1px solid lightgray; }
+		th, td { padding: 5px; }
+		tr:first-child th:first-child { border: none; }
+	</style>
+</head>
+<body>
+	<table>
+		<caption><h2>Querystring test cases</h2></caption>
+		<tr>
+			<th></th>
+			<th>-</th>
+			<th>showhidden</th>
+			<th>showhidden=0</th>
+			<th>showhidden=1</th>
+		</tr>
+		<tr>
+			<th>-</th>
+			<td><a href="Koti_TV_Tallennukset.html">Koti_TV_Tallennukset.html</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden">Koti_TV_Tallennukset.html?showhidden</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=0">Koti_TV_Tallennukset.html?showhidden=0</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=1">Koti_TV_Tallennukset.html?showhidden=1</a></td>
+		</tr>
+		<tr>
+			<th>animations</th>
+			<td><a href="Koti_TV_Tallennukset.html?animations">Koti_TV_Tallennukset.html?animations</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden&animations">Koti_TV_Tallennukset.html?showhidden&animations</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=0&animations">Koti_TV_Tallennukset.html?showhidden=0&animations</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=1&animations">Koti_TV_Tallennukset.html?showhidden=1&animations</a></td>
+		</tr>
+		<tr>
+			<th>animations=0</th>
+			<td><a href="Koti_TV_Tallennukset.html?animations=0">Koti_TV_Tallennukset.html?animations=0</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden&animations=0">Koti_TV_Tallennukset.html?showhidden&animations=0</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=0&animations=0">Koti_TV_Tallennukset.html?showhidden=0&animations=0</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=1&animations=0">Koti_TV_Tallennukset.html?showhidden=1&animations=0</a></td>
+		</tr>
+		<tr>
+			<th>animations=1</th>
+			<td><a href="Koti_TV_Tallennukset.html?animations=1">Koti_TV_Tallennukset.html?animations=1</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden&animations=1">Koti_TV_Tallennukset.html?showhidden&animations=1</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=0&animations=1">Koti_TV_Tallennukset.html?showhidden=0&animations=1</a></td>
+			<td><a href="Koti_TV_Tallennukset.html?showhidden=1&animations=1">Koti_TV_Tallennukset.html?showhidden=1&animations=1</a></td>
+		</tr>
+	</table>
+</body>
+</html>

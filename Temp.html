@@ -1,0 +1,178 @@
+<html><meta charset="UTF-8"><style>html { 
+    font-size: 100%; 
+    overflow-y: scroll; 
+    -webkit-text-size-adjust: 100%; 
+    -ms-text-size-adjust: 100%; 
+}
+
+body{
+    font-family: helvetica, arial, freesans, clean, sans-serif;
+    color: #333;
+    background-color: #fff;
+    border-color: #999999;
+    border-width: 2px;
+    line-height: 1.5;
+    margin: 2em 3em;
+    text-align:left;
+    padding: 0 100px 0 100px;
+}
+
+pre{
+    background-color: #eee;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: auto;
+}
+code{
+    background-color: #eee;
+    padding: 1px 3px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px; 
+}
+pre code {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+li p{
+    margin: 0.3em;
+}
+ul > li{
+    list-style-type: disc;
+}
+a:link, a:visited{
+    color: #33e;
+    text-decoration: none;
+}
+a:hover{
+    color: #00f;
+    text-shadow:1px 1px 2px #ccf;
+    text-decoration:underline;
+}
+h1{
+    color: #999;
+    font-weight: 400;
+    font-size: 36px;
+}
+h2{
+    border-bottom: 1px dotted #aaa;
+    margin-bottom: 1em;
+    color: #333;
+    font-size: 30px;
+}
+h3{
+    color: #666;
+    font-size: 24px;
+}
+h4 {
+    font-size: 21px;
+}
+h5 {
+    font-size: 18px;
+}
+.shadow{
+    -webkit-box-shadow:0 5px 15px #000;
+    -moz-box-shadow:0 5px 15px #000;
+    box-shadow:0 5px 15px #000;     
+}
+</style><body><h1>Telkku.com recording temp stuff</h1>
+<h2>TOC</h2>
+<!-- MarkdownTOC autolink=true autoanchor=true bracket=round -->
+
+<ul>
+<li><a href="#css">CSS</a></li>
+<li><a href="#html">HTML</a></li>
+<li><a href="#js">JS</a></li>
+<li><a href="#misc-telkkucom">MISC Telkku.com</a></li>
+<li><a href="#telkku---dna-tv--hakuintegraatio">Telkku - DNA TV -hakuintegraatio</a><ul>
+<li><a href="#telkku">Telkku</a></li>
+<li><a href="#dna-tv">DNA TV</a></li>
+<li><a href="#misc-dna-tv">MISC DNA TV</a></li>
+</ul>
+</li>
+</ul>
+<!-- /MarkdownTOC -->
+
+<h2>CSS <a name="css"></a></h2>
+<pre><code>.test_record {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+</code></pre>
+<h2>HTML <a name="html"></a></h2>
+<pre><code>&lt;span id="test_record_11" class="test_record"&gt;&lt;/span&gt;
+</code></pre>
+<h2>JS <a name="js"></a></h2>
+<pre><code>$( '#test_record_11' ).load( '/program/show/20150511170017 #recordProgram' );
+$( '#recordProgram' ).attr('onclick', 'record(11, 20150511170017); return false;')
+
+function record(no, id) {
+    app.recorder.record(id);
+    $( '#test_record_' + no ).load( '/program/show/20150511170017 #playProgram' );
+}
+</code></pre>
+<h2>MISC Telkku.com <a name="misc-telkkucom"></a></h2>
+<p><a href="http://www.telkku.com/search?searchText=Historian+salaiset+kansiot&amp;isPartial=0&amp;searchFields=name&amp;startDate=&amp;endDate=&amp;type=all">http://www.telkku.com/search?searchText=Historian+salaiset+kansiot&amp;isPartial=0&amp;searchFields=name&amp;startDate=&amp;endDate=&amp;type=all</a></p>
+<p><a href="https://api.jquery.com/load/">https://api.jquery.com/load/</a></p>
+<h2>Telkku - DNA TV -hakuintegraatio <a name="telkku---dna-tv--hakuintegraatio"></a></h2>
+<h3>Telkku <a name="telkku"></a></h3>
+<p>Sivun URL muotoa: <a href="http://classic.telkku.com/program/show/2015090718009">http://classic.telkku.com/program/show/2015090718009</a></p>
+<p>"2015090718009" on ohjelman ID, joka vaihtuu</p>
+<p>Telkun sivulatauksen jälkeen ajetaan seuraava:</p>
+<pre><code>searchUrl = 'https://tv.dna.fi/webui/epg' + '?customsearch=' + $('#programName').text().trim().replace(/ /g, '+').replace(/&amp;/g, '%26');
+$elem = '&lt;li&gt;&lt;a href="' + searchUrl + '" target="_blank" title="DNA TV" class="btn"&gt;DNA TV&lt;/a&gt;&lt;/li&gt;';
+$('nav.oti-outbound-nav:first ul').append($elem);
+</code></pre>
+<h3>DNA TV <a name="dna-tv"></a></h3>
+<p>Sivun URL muotoa: <a href="https://tv.dna.fi/webui/epg?customsearch=Men+in+Black+II+-+Miehet+mustissa+II">https://tv.dna.fi/webui/epg?customsearch=Men+in+Black+II+-+Miehet+mustissa+II</a></p>
+<p>"Men+in+Black+II+-+Miehet+mustissa+II" on haettava nimi, "+"-merkit korvataan välilyönneillä ja "%26"-enkoodaukset "&amp;"-merkillä</p>
+<p>DNA TV:n sivulatauksen jälkeen ajetaan seuraava:</p>
+<pre><code>$('#keyword').val(decodeURI(window.location.search.replace(new RegExp("^(?:.*[&amp;\\?]" + encodeURI('customsearch').replace(/[\.\+\*]/g, "\\$&amp;") + "(?:\\=([^&amp;]*))?)?.*$", "i"), "$1")).replace(/%26/g, '&amp;').replace(/\+/g,' '));
+$('#search-btn').click();
+</code></pre>
+<h3>MISC DNA TV <a name="misc-dna-tv"></a></h3>
+<p><a href="http://www.telkku.com/ohjelmat/viattomuuden-aika/107647/frii/624045">http://www.telkku.com/ohjelmat/viattomuuden-aika/107647/frii/624045</a></p>
+<p><a href="https://tv.dna.fi/images/matkatv/logo_dnatv.png">https://tv.dna.fi/images/matkatv/logo_dnatv.png</a></p>
+<p>HTML:</p>
+<pre><code>&lt;li class="card__external_links_item ng-scope" ng-repeat="link in ::card.externalLinks"&gt;
+    &lt;a href="https://tv.dna.fi/webui/epg?customsearch=Viattomuuden+aika" target="_blank" title="Ohjelmaan liittyvä haku DNA TV:ssä"&gt;
+        &lt;img src="https://tv.dna.fi/images/matkatv/logo_dnatv.png" alt="Ohjelmaan liittyvä haku DNA TV:ssä" style="
+            max-width: 10rem;
+            max-height: 6.875rem;
+        "&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+</code></pre>
+<p>JS:</p>
+<pre><code>$('h1.page__title span.ng-binding')
+</code></pre>
+<p>GM:</p>
+<pre><code>// @match http://classic.telkku.com/program/show/*
+// @match http://www.telkku.com/ohjelmat/*
+</code></pre>
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>8</li>
+<li>9</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+<li>21</li>
+</ul></body></html>

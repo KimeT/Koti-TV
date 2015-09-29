@@ -1,0 +1,175 @@
+body * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.wrapper {
+	margin: 0 20px;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.new-line {
+	clear: left;
+}
+
+.hidden {
+	display: none;
+}
+
+.info-link {
+	color: gray;
+	font-size: small;
+}
+
+body {
+	margin: 0 10px;
+}
+
+#otsikko,
+#alatunniste {
+	text-align: center;
+}
+
+#alatunniste {
+	clear: both;
+}
+
+#linkit .ohjelma {
+	width: 20%;
+	min-width: 130px;
+	min-height: 50px;
+	padding: 5px;
+	word-break: break-word;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	float: left;
+}
+
+#linkit .ohjelma.hidden {
+	display: block;
+	/*min-height: 0;*/
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+
+	width: 0;
+	min-width: 0;
+}
+#linkit .ohjelma.hidden.show {
+	/*min-height: 50px;*/
+	/*height: auto;*/
+	padding: 5px;
+	/*overflow: visible;*/
+
+	width: 20%;
+	min-width: 130px;
+	min-height: 57px;
+	/*min-height: 50px\9;*/ /* IE8 & IE9 hack */
+}
+#linkit .ohjelma.hidden a {
+	color: gray;
+	font-style: italic;
+}
+#linkit .ohjelma.hidden a:visited {
+	color: darkgray;
+}
+
+#linkit .ohjelma.hidden.animation-hidden {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 300ms, opacity 300ms linear, width 300ms linear, min-width 300ms linear;
+
+	width: 0;
+	min-width: 0;
+}
+#linkit .ohjelma.hidden.animation-show {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 300ms linear, width 300ms linear, width 300ms linear, min-width 300ms linear;
+
+	width: 20%;
+	min-width: 130px;
+}
+#linkit .ohjelma.hidden.show:hover {
+	height: auto;
+}
+
+#linkit p > span:not(:first-child) a {
+	margin-left: 30px;
+}
+
+.program-ordinals .wrapper {
+	counter-reset: programs;
+}
+.program-ordinals .ohjelma:not(.hidden) > a,
+.program-ordinals .ohjelma.show > a {
+	counter-increment: programs;
+	display: inline-block;
+	text-indent: -25px;
+	padding-left: 25px;
+}
+.program-ordinals .ohjelma:not(.hidden) > a:before,
+.program-ordinals .ohjelma.show > a:before {
+	content: counter(programs) '. ';
+	display: inline-block;
+	text-align: right;
+	min-width: 20px;
+	margin: 0 5px 0 0;
+}
+
+.bookmarklet {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	max-width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: small;
+	color: gray;
+}
+
+.label-hidden {
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+}
+.label-hidden:hover {
+	background-color: lightgray;
+	color: gray;
+}
+.label-hidden:hover:before {
+	content: "Click to show hidden KotiRuutu program key value!";
+}
+
+#program-key {
+	margin: 10px;
+	width: 99%; /* <=IE8 */
+	width: calc(100% - 20px);
+	max-width: 99%; /* <=IE8 */
+	max-width: calc(100% - 20px);
+}
+
+/* Fix for browsers not supporting flex-wrap (FF27) */
+@supports not (flex-wrap: wrap) {
+	.wrapper {
+		display: inline-block;
+	}
+
+	#linkit .ohjelma.hidden.show {
+		min-height: 50px;
+	}
+}
