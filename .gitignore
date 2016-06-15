@@ -43,5 +43,8 @@ Temporary Items
 .apdisk
 *.sublime-project
 *.sublime-workspace
+
+# Ignore files
 index.htm
 Telkku links.xlsx
+README.html
